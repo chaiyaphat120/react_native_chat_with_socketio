@@ -1,16 +1,29 @@
 import React, { Component, useEffect, useRef, useState } from 'react'
 import { Text, View, TextInput ,Dimensions, TouchableOpacity, ScrollView } from 'react-native'
 import io from 'socket.io-client'
+import axios from 'axios'
 const socket = io('http://192.168.1.11:3000')
+// const socket = io('https://chat-react2012.herokuapp.com')
 const App = () => {
     const [chatMessage, setChatMessage] = useState('')
     const [name, setName] = useState('')
     const [chatMessages, setChatMessages] = useState([])
     const scroll = useRef(null)
+
     useEffect(() => {
+        const promise = (async () => {
+            let response = await axios.get('http://192.168.1.11:3000')
+            console.log(response.data)
+        })();
+
         socket.on('chat message', ({message , name}) => {  //รันครั้งเดี่ยวทำงานตลอด เป็นตัว subscribe ข้อมูลจาก server
             setChatMessages((e) => [...e, {message, name}])
         })
+        return (() => {
+            promise.then(() => cleanup());
+        });
+
+        
     },[])
 
     const submitChatMessage = () => {
