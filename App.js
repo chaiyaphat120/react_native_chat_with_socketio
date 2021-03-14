@@ -8,7 +8,7 @@ const App = () => {
     const [chatMessages, setChatMessages] = useState([])
     const scroll = useRef(null)
     useEffect(() => {
-        socket.on('chat message', ({message , name}) => {
+        socket.on('chat message', ({message , name}) => {  //รันครั้งเดี่ยวทำงานตลอด เป็นตัว subscribe ข้อมูลจาก server
             setChatMessages((e) => [...e, {message, name}])
         })
     },[])
