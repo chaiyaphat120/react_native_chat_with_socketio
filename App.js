@@ -21,14 +21,14 @@ const App = () => {
     const chatMessagesComponent = chatMessages.map((e,i) => (
         <View key={i} style={{width:"100%" ,padding:5 }}>
             {(e.name !==name ) ?
-                <TouchableOpacity style={{width:"40%",justifyContent:'center',flexDirection:'column' , backgroundColor: '#D1D5DB',height:60,alignItems:'flex-start',borderRadius:10,padding:5}}>
+                <TouchableOpacity style={{width:"40%",justifyContent:'center',flexDirection:'column' , backgroundColor: '#D1D5DB',alignItems:'flex-start',borderRadius:10,padding:5}}>
                     <Text  style={{fontSize:20,color:"rgba(0,0,0,1)"}}>
                     {e.message}
                     </Text>
                     <Text style={{fontSize:10,color:"rgba(0,0,0,0.4)"}}> send by {e.name}</Text>
                 </TouchableOpacity>
                 :
-                <TouchableOpacity style={{width:"40%",justifyContent:'center',flexDirection:'column' , backgroundColor: '#5FA7FA',height:60,alignItems:'flex-start',borderRadius:10,padding:5,alignSelf:'flex-end'}}>
+                <TouchableOpacity style={{width:"40%",justifyContent:'center',flexDirection:'column' , backgroundColor: '#5FA7FA',alignItems:'flex-start',borderRadius:10,padding:5,alignSelf:'flex-end'}}>
                     <Text  style={{fontSize:20,color:"#FFF"}}>
                     {e.message}
                     </Text>
